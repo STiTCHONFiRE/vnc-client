@@ -1,0 +1,32 @@
+<div class="flex flex-col h-full min-h-screen">
+  <header class="sticky top-0 z-30 flex h-14 w-full justify-center items-center
+  bg-base-300 text-base-content shadow-xl">
+    <nav class="navbar w-full">
+      <div class="flex-0 btn btn-ghost px-2">
+        <div class="text-base-content inline-flex text-center text-lg transition-all duration-200">VNC Client</div>
+      </div>
+    </nav>
+  </header>
+  <main class="mb-auto">
+    <ng-container *ngIf="vncData$ | async as vnc" [ngSwitch]="vnc.appState">
+      <ng-container *ngSwitchCase="'APP_LOADING'">
+        <div class="flex flex-col justify-center items-center my-8 text-center">
+          <div class="loading loading-spinner loading-lg text-primary"></div>
+          <div class="my-5">загрузка...</div>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'APP_LOADED'">
+        <div class="flex flex-wrap m-4 justify-center items-center">
+          <app-card-vnc class="m-2 w-5/12"
+                        *ngFor="let data of vnc.appData; let i = index"
+                        [id]="data.id"
+                        [ipAddressAndPort]="data.ipAddressAndPort"
+                        [index]="i + 1"
+          >
+          </app-card-vnc>
+        </div>
+      </ng-container>
+    </ng-container>
+  </main>
+</div>
+

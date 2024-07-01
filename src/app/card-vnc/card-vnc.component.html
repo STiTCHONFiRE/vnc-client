@@ -1,0 +1,9 @@
+<div class="card bg-base-300 w-full">
+  <div class="card-body">
+    <div class="card-title">Компьютер №{{ index }}</div>
+    <div>Адрес компьютера: {{ ipAddressAndPort }}</div>
+    <div class="card-actions justify-end my-4">
+      <button class="btn text-base-300 btn-primary uppercase" [routerLink]="['vnc', id]">подключиться</button>
+    </div>
+  </div>
+</div>

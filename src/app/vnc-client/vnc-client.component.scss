@@ -1,0 +1,24 @@
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.slide-out {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.group:hover .slide-out {
+  transform: translateX(0);
+}
+
+.trigger-area {
+  width: 50px;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
