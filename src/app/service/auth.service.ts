@@ -11,7 +11,7 @@ export class AuthService {
     const config = {
       issuer: "http://localhost:9000",
       redirectUri: `http://localhost:4200/index.html`,
-      silentRefreshRedirectUri: `http://localhost:4200/silent-refresh.html`,
+      silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
       useSilentRefresh: true,
       clientId: 'client',
       responseType: 'code',
