@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ```
 server {
 
-    server_name example.com www.example.com;
+    ...
 
     root /var/www/html;
 
