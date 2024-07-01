@@ -3,6 +3,7 @@ import {VnsService} from "../service/vns.service";
 import {catchError, map, Observable, of, startWith} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {VncData} from "../interface/vnc-data";
+import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
     err?: HttpErrorResponse;
   }>;
 
-  constructor(private vncService: VnsService) {
+  constructor(private vncService: VnsService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -27,5 +28,9 @@ export class HomeComponent implements OnInit {
       startWith({appState: "APP_LOADING"}),
       catchError((err: HttpErrorResponse) => of({appState: "APP_ERROR", err}))
     )
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

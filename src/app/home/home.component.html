@@ -2,8 +2,32 @@
   <header class="sticky top-0 z-30 flex h-14 w-full justify-center items-center
   bg-base-300 text-base-content shadow-xl">
     <nav class="navbar w-full">
-      <div class="flex-0 btn btn-ghost px-2">
-        <div class="text-base-content inline-flex text-center text-lg transition-all duration-200">VNC Client</div>
+      <div class="flex flex-1 md:gap-1 lg:gap-2">
+        <div class=" btn btn-ghost px-2">
+          <div class="text-base-content inline-flex text-center text-lg transition-all duration-200">VNC Client</div>
+        </div>
+      </div>
+      <div class="flex-none">
+        <div class="dropdown dropdown-end mx-3">
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                <span class="w-10 rounded-full">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1684761833~exp=1684762433~hmac=ab615933a6749e5fb4871c74d532cf0c37e1b094fd70d046316dba0355ec5d87"
+                    alt="image"/>
+                </span>
+          </label>
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52">
+            <ng-container>
+              <li>
+                <a class="justify-between">
+                  Профиль
+                  <span class="badge">New</span>
+                </a>
+              </li>
+              <li><a (click)="logout()">Выйти</a></li>
+            </ng-container>
+          </ul>
+        </div>
       </div>
     </nav>
   </header>
