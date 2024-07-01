@@ -2,6 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
 
+## Запуск проекта
+
+Необходимо собрать проект с помощью команды `ng-build`, собранные файлы будут находиться в директории `/dist` в корневой директории проекта.
+
+Полученные файлы необходимо разместить на сервере, который способен раздавать статический контент, например: `nginx`.
+
+Пример конфигурации `nginx` сервера.
+```
+server {
+
+    server_name example.com www.example.com;
+
+    root /var/www/html;
+
+    location / {
+	try_files $uri $uri/ /index.html;
+    }
+}
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
