@@ -28,6 +28,19 @@ export class VncClientComponent implements OnInit, AfterViewInit {
     this.client = new NoVncClient(this.vnc.nativeElement as Element, `ws://localhost:8080/ws/${this.id}`)
     this.client.clipViewport = true;
     this.client.scaleViewport = true;
+    this.client.addEventListener("disconnect", this.disconnectEventFn);
+    this.client.addEventListener("connect", this.connectedEventFn);
+  }
+
+  disconnectEventFn = (event: CustomEvent<{ clean: boolean }>) => {
+    if (event.detail.clean)
+      console.log("Disconnected from the server");
+    else
+      console.log("Something went wrong, connection is closed")
+  }
+
+  connectedEventFn = () => {
+    console.log("Connected to the server");
   }
 
 }

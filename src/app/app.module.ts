@@ -4,12 +4,11 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
-import {HttpEvent, HttpHandlerFn, HttpRequest, provideHttpClient, withInterceptors} from "@angular/common/http";
+import {HttpHandlerFn, HttpRequest, provideHttpClient, withInterceptors} from "@angular/common/http";
 import {CardVncComponent} from './card-vnc/card-vnc.component';
 import {VncClientComponent} from './vnc-client/vnc-client.component';
 import {OAuthModuleConfig, OAuthStorage, provideOAuthClient} from "angular-oauth2-oidc";
 import {AuthService} from "./service/auth.service";
-import {Observable} from "rxjs";
 
 const appInitializerFn = (authService: AuthService) => {
   return () => {
@@ -22,7 +21,7 @@ export function checkUrl(url: string, moduleConfig: OAuthModuleConfig): boolean 
   return !!found;
 }
 
-export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+const oauthInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
   let authStorage = inject(OAuthStorage);
   let moduleConfig = inject(OAuthModuleConfig);
 
@@ -43,7 +42,7 @@ export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
     let headers = req.headers
       .set('Authorization', header);
 
-    req = req.clone({ headers });
+    req = req.clone({headers});
   }
 
   return next(req)
@@ -62,7 +61,7 @@ export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
   ],
   providers: [
     provideHttpClient(
-      withInterceptors([loggingInterceptor])
+      withInterceptors([oauthInterceptorFn])
     ),
     provideOAuthClient({
       resourceServer: {
@@ -80,4 +79,5 @@ export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -10,8 +10,8 @@ export class AuthService {
   constructor(private oauthService: OAuthService) {
     const config = {
       issuer: "http://localhost:9000",
-      redirectUri: `http://localhost:4200/index.html`,
-      silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+      redirectUri: `${window.location.origin}/index.html`,
+      silentRefreshRedirectUri: `${window.location.origin}/silent-refresh.html`,
       useSilentRefresh: true,
       clientId: 'client',
       responseType: 'code',
@@ -29,7 +29,6 @@ export class AuthService {
       if (login) {
         console.log("DONE!")
         this.oauthService.setupAutomaticSilentRefresh();
-        console.log(this.oauthService.getAccessToken())
       }
     } catch {
       this.err = true;
