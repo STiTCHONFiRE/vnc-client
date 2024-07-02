@@ -1,0 +1,13 @@
+<ng-container *ngIf="message$ | async as message">
+  <div class="info-panel"
+       [ngClass]="{'bg-error': message.type === 'ERR',
+          'bg-success': message.type === 'SUCCESS',
+          'bg-info': message.type === 'INFO',
+          'show': isAnimating,
+          'hide': !isAnimating && isVisible
+       }"
+       *ngIf="isVisible"
+  >
+    <p class="text-xl text-primary-content">{{ message.text }}</p>
+  </div>
+</ng-container>

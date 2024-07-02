@@ -1,0 +1,36 @@
+.info-panel {
+  position: fixed;
+  top: -100px; /* Позиция выше верхней границы экрана */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  z-index: 1000;
+  transition: top 0.5s ease-in-out;
+}
+
+.info-panel.show {
+  animation: slideDown 0.5s forwards; /* Анимация выдвижения */
+}
+
+.info-panel.hide {
+  animation: slideUp 0.5s forwards; /* Анимация задвижения */
+}
+
+@keyframes slideDown {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: 0;
+  }
+  to {
+    top: -100px;
+  }
+}

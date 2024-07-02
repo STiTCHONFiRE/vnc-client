@@ -1,54 +1,74 @@
-<div class="group fixed top-1/2 left-0 transform -translate-y-1/2 z-50" style="padding: 50px 50px 50px 0">
-  <div class="trigger-area"></div>
-  <ul class="slide-out menu bg-base-200 rounded-box">
-    <li>
-      <a (click)="disconnect()" routerLink="/" class="tooltip tooltip-right" data-tip="На главную">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      </a>
-    </li>
-    <li>
-      <a>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </a>
-    </li>
-    <li>
-      <a>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      </a>
-    </li>
-  </ul>
-</div>
+<ng-container *ngIf="!err">
+  <div class="group fixed top-1/2 left-0 transform -translate-y-1/2 z-50" style="padding: 50px 50px 50px 0">
+    <div class="trigger-area"></div>
+    <ul class="slide-out menu bg-base-200 rounded-box">
+      <li>
+        <a (click)="disconnect()" routerLink="/" class="tooltip tooltip-right" data-tip="На главную">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="tooltip tooltip-right" data-tip="Буфер обмена" (click)="modalClipboard.showModal()">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" class="h-5 w-5">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M8 5.00005C7.01165 5.00082 6.49359 5.01338 6.09202 5.21799C5.71569 5.40973 5.40973 5.71569 5.21799 6.09202C5 6.51984 5 7.07989 5 8.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.07989 21 8.2 21H15.8C16.9201 21 17.4802 21 17.908 20.782C18.2843 20.5903 18.5903 20.2843 18.782 19.908C19 19.4802 19 18.9201 19 17.8V8.2C19 7.07989 19 6.51984 18.782 6.09202C18.5903 5.71569 18.2843 5.40973 17.908 5.21799C17.5064 5.01338 16.9884 5.00082 16 5.00005M8 5.00005V7H16V5.00005M8 5.00005V4.70711C8 4.25435 8.17986 3.82014 8.5 3.5C8.82014 3.17986 9.25435 3 9.70711 3H14.2929C14.7456 3 15.1799 3.17986 15.5 3.5C15.8201 3.82014 16 4.25435 16 4.70711V5.00005M12 11H9M15 15H9"
+                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-container>
 <div #vnc class="screen"></div>
+<app-info-panel></app-info-panel>
+<ng-container *ngIf="loading">
+  <div class="hero min-h-screen bg-base-200">
+    <div class="hero-content flex-col text-center">
+      <span class="loading loading-ring loading-lg text-primary"></span>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="err">
+  <div class="hero min-h-screen bg-base-200">
+    <div class="hero-content flex-col text-center">
+      <div class="max-w-full">
+        <h1 class="text-5xl font-bold">Произошла ошибка подключения!</h1>
+        <p class="py-6">При подключения к серверу произошла ошибка, возможно он недоступен. Попробуйте позже.</p>
+        <button class="btn btn-primary uppercase" routerLink="/">
+          на главную
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<dialog class="modal" #modalClipboard>
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="text-lg font-bold">Буфер обмена</h3>
+    <p class="py-4">Введите текст, который нужно отправить в буфер обмена удаленного компьютера.</p>
+    <textarea [(ngModel)]="clipboard"
+      placeholder="Буфер обмена"
+      class="textarea textarea-bordered w-full h-72"></textarea>
+    <p class="py-4 text-error text-center" *ngIf="loading">Буфер обмена недоступен при загрузке.</p>
+    <div class="modal-action">
+      <button class="btn uppercase" [disabled]="loading || err || clipboard.length === 0" (click)="sendClipboard(); modalClipboard.close()">отправить</button>
+    </div>
+  </div>
+</dialog>

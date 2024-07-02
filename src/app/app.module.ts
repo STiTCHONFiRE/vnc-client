@@ -9,6 +9,8 @@ import {CardVncComponent} from './card-vnc/card-vnc.component';
 import {VncClientComponent} from './vnc-client/vnc-client.component';
 import {OAuthModuleConfig, OAuthStorage, provideOAuthClient} from "angular-oauth2-oidc";
 import {AuthService} from "./service/auth.service";
+import { InfoPanelComponent } from './info-panel/info-panel.component';
+import {FormsModule} from "@angular/forms";
 
 const appInitializerFn = (authService: AuthService) => {
   return () => {
@@ -53,11 +55,13 @@ const oauthInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
     AppComponent,
     HomeComponent,
     CardVncComponent,
-    VncClientComponent
+    VncClientComponent,
+    InfoPanelComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(
