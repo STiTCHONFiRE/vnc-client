@@ -32,63 +32,65 @@
     </nav>
   </header>
   <main class="mb-auto">
-    <ng-container *ngIf="vncData$ | async as vnc" [ngSwitch]="vnc.appState">
-      <ng-container *ngSwitchCase="'APP_LOADING'">
-        <div class="flex flex-wrap m-4 justify-center items-center">
-          <div class="flex w-5/12 flex-col gap-4 m-2">
-            <div class="flex items-center gap-4">
-              <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
-              <div class="flex flex-col gap-4 w-full">
-                <div class="skeleton h-4 w-full"></div>
-                <div class="skeleton h-4 w-full"></div>
+    @if (vncData$ | async; as vnc) {
+      @switch (vnc.appState) {
+        @case ('APP_LOADING') {
+          <div class="flex flex-wrap m-4 justify-center items-center">
+            <div class="flex w-5/12 flex-col gap-4 m-2">
+              <div class="flex items-center gap-4">
+                <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+                <div class="flex flex-col gap-4 w-full">
+                  <div class="skeleton h-4 w-full"></div>
+                  <div class="skeleton h-4 w-full"></div>
+                </div>
               </div>
+              <div class="skeleton h-32 w-full"></div>
             </div>
-            <div class="skeleton h-32 w-full"></div>
-          </div>
-          <div class="flex w-5/12 flex-col gap-4 m-2">
-            <div class="flex items-center gap-4">
-              <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
-              <div class="flex flex-col gap-4 w-full">
-                <div class="skeleton h-4 w-full"></div>
-                <div class="skeleton h-4 w-full"></div>
+            <div class="flex w-5/12 flex-col gap-4 m-2">
+              <div class="flex items-center gap-4">
+                <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+                <div class="flex flex-col gap-4 w-full">
+                  <div class="skeleton h-4 w-full"></div>
+                  <div class="skeleton h-4 w-full"></div>
+                </div>
               </div>
+              <div class="skeleton h-32 w-full"></div>
             </div>
-            <div class="skeleton h-32 w-full"></div>
-          </div>
-          <div class="flex w-5/12 flex-col gap-4 m-2">
-            <div class="flex items-center gap-4">
-              <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
-              <div class="flex flex-col gap-4 w-full">
-                <div class="skeleton h-4 w-full"></div>
-                <div class="skeleton h-4 w-full"></div>
+            <div class="flex w-5/12 flex-col gap-4 m-2">
+              <div class="flex items-center gap-4">
+                <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+                <div class="flex flex-col gap-4 w-full">
+                  <div class="skeleton h-4 w-full"></div>
+                  <div class="skeleton h-4 w-full"></div>
+                </div>
               </div>
+              <div class="skeleton h-32 w-full"></div>
             </div>
-            <div class="skeleton h-32 w-full"></div>
-          </div>
-          <div class="flex w-5/12 flex-col gap-4 m-2">
-            <div class="flex items-center gap-4">
-              <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
-              <div class="flex flex-col gap-4 w-full">
-                <div class="skeleton h-4 w-full"></div>
-                <div class="skeleton h-4 w-full"></div>
+            <div class="flex w-5/12 flex-col gap-4 m-2">
+              <div class="flex items-center gap-4">
+                <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+                <div class="flex flex-col gap-4 w-full">
+                  <div class="skeleton h-4 w-full"></div>
+                  <div class="skeleton h-4 w-full"></div>
+                </div>
               </div>
+              <div class="skeleton h-32 w-full"></div>
             </div>
-            <div class="skeleton h-32 w-full"></div>
           </div>
-        </div>
-      </ng-container>
-      <ng-container *ngSwitchCase="'APP_LOADED'">
-        <div class="flex flex-wrap m-4 justify-center items-center">
-          <app-card-vnc class="m-2 w-5/12"
-                        *ngFor="let data of vnc.appData; let i = index"
-                        [id]="data.id"
-                        [ipAddressAndPort]="data.ipAddressAndPort"
-                        [index]="i + 1"
-          >
-          </app-card-vnc>
-        </div>
-      </ng-container>
-    </ng-container>
+        }
+        @case ('APP_LOADED') {
+          <div class="flex flex-wrap m-4 justify-center items-center">
+            <app-card-vnc class="m-2 w-5/12"
+                          *ngFor="let data of vnc.appData; let i = index"
+                          [id]="data.id"
+                          [ipAddressAndPort]="data.ipAddressAndPort"
+                          [index]="i + 1"
+            >
+            </app-card-vnc>
+          </div>
+        }
+      }
+    }
   </main>
 </div>
 

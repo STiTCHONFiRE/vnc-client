@@ -9,9 +9,14 @@ import {BehaviorSubject} from "rxjs";
 export class InfoPanelComponent implements OnInit, OnDestroy {
   message$: BehaviorSubject<{ text: string, type: "ERR" | "SUCCESS" | "INFO" }>
     = new BehaviorSubject<{ text: string; type: "ERR" | "SUCCESS" | "INFO" }>({text: "", type: "INFO"});
-  isVisible: boolean = false;
-  isAnimating: boolean = false;
+
+  visible$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  animating$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   hideTimeout: any;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -22,8 +27,8 @@ export class InfoPanelComponent implements OnInit, OnDestroy {
   }
 
   private showPanel() {
-    this.isAnimating = true;
-    this.isVisible = true;
+    this.animating$.next(true);
+    this.visible$.next(true);
 
     if (this.hideTimeout) {
       clearTimeout(this.hideTimeout);
@@ -35,11 +40,11 @@ export class InfoPanelComponent implements OnInit, OnDestroy {
   }
 
   private hidePanel() {
-    this.isAnimating = false;
+    this.animating$.next(false);
 
     // Дождаться завершения анимации задвижения перед скрытием панели
     setTimeout(() => {
-      this.isVisible = false;
+      this.visible$.next(false);
     }, 500); // Время для завершения анимации
   }
 

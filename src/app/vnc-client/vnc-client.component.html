@@ -1,4 +1,4 @@
-<ng-container *ngIf="!err">
+@if (!(err$ | async)) {
   <div class="group fixed top-1/2 left-0 transform -translate-y-1/2 z-50" style="padding: 50px 50px 50px 0">
     <div class="trigger-area"></div>
     <ul class="slide-out menu bg-base-200 rounded-box">
@@ -31,19 +31,32 @@
           </svg>
         </a>
       </li>
+      <li>
+        <a class="tooltip tooltip-right" data-tip="Пользователи в сети" (click)="modalUsers.showModal()">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </a>
+      </li>
     </ul>
   </div>
-</ng-container>
+}
 <div #vnc class="screen"></div>
 <app-info-panel></app-info-panel>
-<ng-container *ngIf="loading">
+@if (loading$ | async) {
   <div class="hero min-h-screen bg-base-200">
     <div class="hero-content flex-col text-center">
       <span class="loading loading-ring loading-lg text-primary"></span>
     </div>
   </div>
-</ng-container>
-<ng-container *ngIf="err">
+}
+@if (err$ | async) {
   <div class="hero min-h-screen bg-base-200">
     <div class="hero-content flex-col text-center">
       <div class="max-w-full">
@@ -55,7 +68,7 @@
       </div>
     </div>
   </div>
-</ng-container>
+}
 <dialog class="modal" #modalClipboard>
   <div class="modal-box">
     <form method="dialog">
@@ -64,11 +77,30 @@
     <h3 class="text-lg font-bold">Буфер обмена</h3>
     <p class="py-4">Введите текст, который нужно отправить в буфер обмена удаленного компьютера.</p>
     <textarea [(ngModel)]="clipboard"
-      placeholder="Буфер обмена"
-      class="textarea textarea-bordered w-full h-72"></textarea>
-    <p class="py-4 text-error text-center" *ngIf="loading">Буфер обмена недоступен при загрузке.</p>
+              placeholder="Буфер обмена"
+              class="textarea textarea-bordered w-full h-72"></textarea>
+    <p class="py-4 text-error text-center" *ngIf="loading$ | async">Буфер обмена недоступен при загрузке.</p>
     <div class="modal-action">
-      <button class="btn uppercase" [disabled]="loading || err || clipboard.length === 0" (click)="sendClipboard(); modalClipboard.close()">отправить</button>
+      <button class="btn uppercase" [disabled]="(loading$ | async) || (err$ | async) || clipboard.length === 0"
+              (click)="sendClipboard(); modalClipboard.close()">отправить
+      </button>
+    </div>
+  </div>
+</dialog>
+<dialog class="modal" #modalUsers>
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="text-lg font-bold">Подключенные пользователи:</h3>
+    <div class="flex flex-wrap items-center m-2">
+      @if (users.size > 0) {
+        @for (user of users; track user) {
+          <span class="badge badge-primary badge-lg m-2">{{ user }}</span>
+        }
+      } @else {
+        <div class="text-red-800 text-xl">Никто не подключился, возможно произошла ошибка.</div>
+      }
     </div>
   </div>
 </dialog>

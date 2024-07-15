@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {OAuthService} from "angular-oauth2-oidc";
+import {ConfigService} from "./config.service";
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import {OAuthService} from "angular-oauth2-oidc";
 export class AuthService {
   private err: boolean;
 
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService, private configService: ConfigService) {
     const config = {
-      issuer: "http://localhost:9000",
+      issuer: this.configService.getAuthUrl(),
       redirectUri: `${window.location.origin}/index.html`,
       silentRefreshRedirectUri: `${window.location.origin}/silent-refresh.html`,
       useSilentRefresh: true,
@@ -27,7 +28,6 @@ export class AuthService {
       const login = await this.oauthService.tryLogin();
 
       if (login) {
-        console.log("DONE!")
         this.oauthService.setupAutomaticSilentRefresh();
       }
     } catch {

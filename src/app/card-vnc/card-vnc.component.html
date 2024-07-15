@@ -2,8 +2,34 @@
   <div class="card-body">
     <div class="card-title">Компьютер №{{ index }}</div>
     <div>Адрес компьютера: {{ ipAddressAndPort }}</div>
+    <div>Статус:
+      @if (!(err$ | async)) {
+        @if (init$ | async) {
+          <div class="inline-flex justify-center items-center">
+            подключение...
+            <span class="loading loading-spinner m-2"></span>
+          </div>
+        } @else {
+          <span class="badge badge-success badge-lg m-2">подключено</span>
+        }
+      } @else {
+        <span class="badge badge-error badge-lg m-2">ошибка подключения</span>
+      }
+    </div>
+    <div class="flex flex-col justify-center items-center m-2">
+      <div class="screen" #vnc [ngClass]="{'hidden': init$ | async}"></div>
+    </div>
     <div class="card-actions justify-end my-4">
-      <button class="btn text-base-300 btn-primary uppercase" [routerLink]="['vnc', id]">подключиться</button>
+      <button class="btn text-base-300 btn-primary uppercase"
+              [routerLink]="['vnc', id]"
+              [disabled]="(loading$ | async) || (err$ | async) || (init$ | async)"
+              (click)="onClick()"
+      >
+        @if (loading$ | async) {
+          <span class="loading loading-spinner"></span>
+        }
+        подключиться
+      </button>
     </div>
   </div>
 </div>
