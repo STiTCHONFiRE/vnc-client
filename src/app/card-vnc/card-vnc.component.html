@@ -22,7 +22,7 @@
     <div class="card-actions justify-end my-4">
       <button class="btn text-base-300 btn-primary uppercase"
               [routerLink]="['vnc', id]"
-              [disabled]="(loading$ | async) || (err$ | async) || (init$ | async)"
+              [disabled]="(loading$ | async)"
               (click)="onClick()"
       >
         @if (loading$ | async) {

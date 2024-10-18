@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {VnsService} from "../service/vns.service";
-import {catchError, map, Observable, of, startWith} from "rxjs";
-import {HttpErrorResponse} from "@angular/common/http";
-import {VncData} from "../interface/vnc-data";
-import {AuthService} from "../service/auth.service";
+import { Component, inject, OnInit } from '@angular/core';
+import { VnsService } from '../service/vns.service';
+import { catchError, map, Observable, of, startWith } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { VncData } from '../interface/vnc-data';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -17,17 +17,21 @@ export class HomeComponent implements OnInit {
     err?: HttpErrorResponse;
   }>;
 
-  constructor(private vncService: VnsService, private authService: AuthService) {
+  public vncService: VnsService = inject(VnsService);
+
+  constructor(
+    private readonly authService: AuthService,
+  ) {
   }
 
   ngOnInit(): void {
     this.vncData$ = this.vncService.vncData$().pipe(
       map((result) => {
-        return {appState: "APP_LOADED", appData: result}
+        return {appState: 'APP_LOADED', appData: result};
       }),
-      startWith({appState: "APP_LOADING"}),
-      catchError((err: HttpErrorResponse) => of({appState: "APP_ERROR", err}))
-    )
+      startWith({appState: 'APP_LOADING'}),
+      catchError((err: HttpErrorResponse) => of({appState: 'APP_ERROR', err}))
+    );
   }
 
   logout() {

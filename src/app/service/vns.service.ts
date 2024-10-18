@@ -15,9 +15,7 @@ export class VnsService {
     this.SERVER_URL = `${this.configService.getServerUrl()}/api/v1/vnc`;
   }
 
-  vncData$ = () => this.httpClient.get<VncData[]>(this.SERVER_URL).pipe(
-    first()
-  )
+  vncData$ = () => this.httpClient.get<VncData[]>(this.SERVER_URL)
 
   users$ = (id: string) => this.httpClient.get<UsersData>(`${this.SERVER_URL}/${id}/users`).pipe(
     first()

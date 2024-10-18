@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, ElementRef, isDevMode, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import NoVncClient from "@novnc/novnc/lib/rfb.js";
-import {ActivatedRoute} from "@angular/router";
-import {InfoPanelComponent} from "../info-panel/info-panel.component";
-import {BehaviorSubject, catchError, EMPTY, first, Observable, Subscription, tap} from "rxjs";
-import {TokenData} from "../interface/token-data";
-import {ConfigService} from "../service/config.service";
-import {UserDataEvent, UsersData} from "../interface/user-data-event";
-import {WebSocketService} from "../service/web-socket.service";
-import {VnsService} from "../service/vns.service";
+import { AfterViewInit, Component, ElementRef, isDevMode, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import NoVncClient from '@novnc/novnc/lib/rfb.js';
+import { ActivatedRoute } from '@angular/router';
+import { InfoPanelComponent } from '../info-panel/info-panel.component';
+import { BehaviorSubject, catchError, EMPTY, Observable, Subscription } from 'rxjs';
+import { TokenData } from '../interface/token-data';
+import { ConfigService } from '../service/config.service';
+import { UserDataEvent, UsersData } from '../interface/user-data-event';
+import { WebSocketService } from '../service/web-socket.service';
+import { VnsService } from '../service/vns.service';
 
 
 @Component({
@@ -37,7 +37,7 @@ export class VncClientComponent implements OnInit, AfterViewInit, OnDestroy {
 
   users: Set<string> = new Set<string>();
 
-  clipboard: string = "";
+  clipboard = "";
 
   constructor(
     private route: ActivatedRoute,

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./service/auth.service";
 import {BehaviorSubject} from "rxjs";
-import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent} from "@angular/router";
+import {NavigationCancel, NavigationEnd, NavigationError, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',

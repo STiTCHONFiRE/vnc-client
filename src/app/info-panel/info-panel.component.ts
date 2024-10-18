@@ -36,16 +36,15 @@ export class InfoPanelComponent implements OnInit, OnDestroy {
 
     this.hideTimeout = setTimeout(() => {
       this.hidePanel();
-    }, 3000); // Закрыть панель через 5 секунд
+    }, 3000);
   }
 
   private hidePanel() {
     this.animating$.next(false);
 
-    // Дождаться завершения анимации задвижения перед скрытием панели
     setTimeout(() => {
       this.visible$.next(false);
-    }, 500); // Время для завершения анимации
+    }, 500);
   }
 
   public sendMessage(message: string, type: "ERR" | "SUCCESS" | "INFO") {

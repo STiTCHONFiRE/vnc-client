@@ -12,6 +12,7 @@ import {AuthService} from "./service/auth.service";
 import {InfoPanelComponent} from './info-panel/info-panel.component';
 import {FormsModule} from "@angular/forms";
 import {oauthInterceptorFn} from "./interceptor/oauth.interceptor";
+import { TestComponent } from './test/test.component';
 
 const appInitializerFn = (authService: AuthService) => {
   return () => {
@@ -29,7 +30,8 @@ const allowedUrlsFn = (): string[] => {
     HomeComponent,
     CardVncComponent,
     VncClientComponent,
-    InfoPanelComponent
+    InfoPanelComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
