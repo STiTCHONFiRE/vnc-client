@@ -46,9 +46,7 @@ module.exports = tseslint.config(
           'prettier/@typescript-eslint',
           'plugin:prettier/recommended'
         ],
-        rules: {
-          ...
-        }
+        rules: {},
       },
     ]
   },

@@ -30,9 +30,7 @@ export class InfoPanelComponent implements OnInit, OnDestroy {
     this.animating$.next(true);
     this.visible$.next(true);
 
-    if (this.hideTimeout) {
-      clearTimeout(this.hideTimeout);
-    }
+    if (this.hideTimeout) {clearTimeout(this.hideTimeout);}
 
     this.hideTimeout = setTimeout(() => {
       this.hidePanel();
