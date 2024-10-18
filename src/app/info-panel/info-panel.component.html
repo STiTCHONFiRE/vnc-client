@@ -1,13 +1,14 @@
 @if (message$ | async; as message) {
-  <div class="info-panel"
-       [ngClass]="{'bg-error': message.type === 'ERR',
-          'bg-success': message.type === 'SUCCESS',
-          'bg-info': message.type === 'INFO',
-          'show': animating$ | async,
-          'hide': !(animating$ | async) && (visible$ | async)
-       }"
-       *ngIf="visible$ | async"
-  >
+  <div
+    class="info-panel"
+    [ngClass]="{
+      'bg-error': message.type === 'ERR',
+      'bg-success': message.type === 'SUCCESS',
+      'bg-info': message.type === 'INFO',
+      show: animating$ | async,
+      hide: (animating$ | async) === false && (visible$ | async),
+    }"
+    *ngIf="visible$ | async">
     <p class="text-xl text-primary-content">{{ message.text }}</p>
   </div>
 }

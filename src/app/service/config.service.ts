@@ -1,27 +1,27 @@
-import {Injectable, isDevMode} from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConfigService {
-  private readonly SERVER_URL: string = "http://localhost:8080";
-  private readonly AUTH_SERVER_URL: string = "http://localhost:9000";
-  private readonly VNC_WEBSOCKET_URL: string = "ws://localhost:8080";
-  private readonly USERS_WEBSOCKET_URL: string = "ws://localhost:8080";
+  private readonly SERVER_URL: string = 'http://localhost:8080';
+  private readonly AUTH_SERVER_URL: string = 'http://localhost:9000';
+  private readonly VNC_WEBSOCKET_URL: string = 'ws://localhost:8080';
+  private readonly USERS_WEBSOCKET_URL: string = 'ws://localhost:8080';
 
-  private readonly TEST_SERVER_URL: string = "http://localhost:8080";
-  private readonly TEST_AUTH_SERVER_URL: string = "http://localhost:9000";
-  private readonly TEST_VNC_WEBSOCKET_URL: string = "ws://localhost:8080";
-  private readonly TEST_USERS_WEBSOCKET_URL: string = "ws://localhost:8080";
+  private readonly TEST_SERVER_URL: string = 'http://localhost:8080';
+  private readonly TEST_AUTH_SERVER_URL: string = 'http://localhost:9000';
+  private readonly TEST_VNC_WEBSOCKET_URL: string = 'ws://localhost:8080';
+  private readonly TEST_USERS_WEBSOCKET_URL: string = 'ws://localhost:8080';
 
-  constructor() { }
+  constructor() {}
 
   public getServerUrl() {
     if (isDevMode()) {
       return this.TEST_SERVER_URL;
     }
 
-    return this.SERVER_URL
+    return this.SERVER_URL;
   }
 
   public getAuthUrl() {

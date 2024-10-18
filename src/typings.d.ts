@@ -1,5 +1,5 @@
 // eslint-disable-next-line @definitelytyped/no-declare-current-package
-declare module "@novnc/novnc/lib/rfb.js" {
+declare module '@novnc/novnc/lib/rfb.js' {
   /**
    * An `object` specifying the credentials to provide to the server when authenticating.
    */
@@ -57,7 +57,9 @@ declare module "@novnc/novnc/lib/rfb.js" {
      * specified to {@link NoVncClient}. The `detail` property is an `object` containing the
      * property `types` which is an `Array` of `string` listing the credentials that are required.
      */
-    credentialsrequired: CustomEvent<{ types: Array<keyof NoVncCredentials> }>;
+    credentialsrequired: CustomEvent<{
+      types: (keyof NoVncCredentials)[];
+    }>;
 
     /**
      * The `securityfailure` event is fired when the handshaking process with the server fails
@@ -77,7 +79,10 @@ declare module "@novnc/novnc/lib/rfb.js" {
      * will probably send English strings. The server can choose to not send a reason and in these
      * cases the `reason` property will be omitted.
      */
-    securityfailure: CustomEvent<{ status: number; reason?: string }>;
+    securityfailure: CustomEvent<{
+      status: number;
+      reason?: string;
+    }>;
 
     /**
      * The `clipboard` event is fired when the server has sent clipboard data. The `detail` property
@@ -101,7 +106,9 @@ declare module "@novnc/novnc/lib/rfb.js" {
      * The `detail` property is an `object` with the property `capabilities` containing the new
      * value of `capabilities`.
      */
-    capabilities: CustomEvent<{ capabilities: NoVncClient["capabilities"] }>;
+    capabilities: CustomEvent<{
+      capabilities: NoVncClient['capabilities'];
+    }>;
   }
 
   type NoVncEventType = keyof NoVncEvents;
@@ -110,11 +117,23 @@ declare module "@novnc/novnc/lib/rfb.js" {
   class NoVncEventTarget extends EventTarget {
     protected _listeners: Map<NoVncEventType, (event: Event) => void>;
 
-    addEventListener<T extends NoVncEventType>(type: T, listener: (event: NoVncEvents[T]) => void): void;
-    addEventListener(type: string, listener: (event: CustomEvent) => void): void;
+    addEventListener<T extends NoVncEventType>(
+      type: T,
+      listener: (event: NoVncEvents[T]) => void
+    ): void;
+    addEventListener(
+      type: string,
+      listener: (event: CustomEvent) => void
+    ): void;
 
-    removeEventListener<T extends NoVncEventType>(type: T, listener: (event: NoVncEvents[T]) => void): void;
-    removeEventListener(type: string, listener: (event: CustomEvent) => void): void;
+    removeEventListener<T extends NoVncEventType>(
+      type: T,
+      listener: (event: NoVncEvents[T]) => void
+    ): void;
+    removeEventListener(
+      type: string,
+      listener: (event: CustomEvent) => void
+    ): void;
 
     dispatchEvent(event: NoVncEvent | CustomEvent): boolean;
   }
@@ -138,7 +157,11 @@ declare module "@novnc/novnc/lib/rfb.js" {
      * @param options - An {@link NoVncOptions} specifying extra details about how the connection
      * should be made.
      */
-    constructor(target: Element, url: string | WebSocket | RTCDataChannel, options?: NoVncOptions);
+    constructor(
+      target: Element,
+      url: string | WebSocket | RTCDataChannel,
+      options?: NoVncOptions
+    );
 
     /**
      * Is a `boolean` indicating if any events (e.g. key presses or mouse movement) should be
@@ -304,12 +327,16 @@ declare module "@novnc/novnc/lib/rfb.js" {
      * @param type A `string` indicating the requested MIME type of the image
      * @param quality A `number` between 0 and 1 indicating the image quality.
      */
-    toBlob(callback: (blob: Blob) => void, type?: string, quality?: number): void;
+    toBlob(
+      callback: (blob: Blob) => void,
+      type?: string,
+      quality?: number
+    ): void;
   }
 }
 
 // eslint-disable-next-line @definitelytyped/no-declare-current-package
-declare module "@novnc/novnc/lib/util/browser" {
+declare module '@novnc/novnc/lib/util/browser' {
   let isTouchDevice: boolean;
   let dragThreshold: number;
 
@@ -324,7 +351,7 @@ declare module "@novnc/novnc/lib/util/browser" {
 }
 
 // eslint-disable-next-line @definitelytyped/no-declare-current-package
-declare module "@novnc/novnc/lib/input/util" {
+declare module '@novnc/novnc/lib/input/util' {
   interface KeyboardEventBase {
     char?: string;
     charCode?: number;

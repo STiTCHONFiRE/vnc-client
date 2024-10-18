@@ -1,15 +1,14 @@
-import {Injectable} from '@angular/core';
-import {webSocket} from "rxjs/webSocket";
-import {UserDataEvent} from "../interface/user-data-event";
+import { Injectable } from '@angular/core';
+import { webSocket } from 'rxjs/webSocket';
+import { UserDataEvent } from '../interface/user-data-event';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WebSocketService {
-
-  constructor() { }
+  constructor() {}
 
   connect$ = (url: string) => {
     return webSocket<UserDataEvent>(url).asObservable();
-  }
+  };
 }

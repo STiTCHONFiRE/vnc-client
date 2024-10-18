@@ -1,9 +1,15 @@
 @if (!(err$ | async)) {
-  <div class="group fixed top-1/2 left-0 transform -translate-y-1/2 z-50" style="padding: 50px 50px 50px 0">
+  <div
+    class="group fixed top-1/2 left-0 transform -translate-y-1/2 z-50"
+    style="padding: 50px 50px 50px 0">
     <div class="trigger-area"></div>
     <ul class="slide-out menu bg-base-200 rounded-box">
       <li>
-        <a (click)="disconnect()" routerLink="/" class="tooltip tooltip-right" data-tip="На главную">
+        <a
+          (click)="disconnect()"
+          routerLink="/"
+          class="tooltip tooltip-right"
+          data-tip="На главную">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -14,32 +20,59 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
         </a>
       </li>
       <li>
-        <a class="tooltip tooltip-right" data-tip="Буфер обмена" (click)="modalClipboard.showModal()">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" class="h-5 w-5">
+        <a
+          class="tooltip tooltip-right"
+          data-tip="Буфер обмена"
+          (click)="modalClipboard.showModal()">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="#ffffff"
+            class="h-5 w-5">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M8 5.00005C7.01165 5.00082 6.49359 5.01338 6.09202 5.21799C5.71569 5.40973 5.40973 5.71569 5.21799 6.09202C5 6.51984 5 7.07989 5 8.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.07989 21 8.2 21H15.8C16.9201 21 17.4802 21 17.908 20.782C18.2843 20.5903 18.5903 20.2843 18.782 19.908C19 19.4802 19 18.9201 19 17.8V8.2C19 7.07989 19 6.51984 18.782 6.09202C18.5903 5.71569 18.2843 5.40973 17.908 5.21799C17.5064 5.01338 16.9884 5.00082 16 5.00005M8 5.00005V7H16V5.00005M8 5.00005V4.70711C8 4.25435 8.17986 3.82014 8.5 3.5C8.82014 3.17986 9.25435 3 9.70711 3H14.2929C14.7456 3 15.1799 3.17986 15.5 3.5C15.8201 3.82014 16 4.25435 16 4.70711V5.00005M12 11H9M15 15H9"
-                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
             </g>
           </svg>
         </a>
       </li>
       <li>
-        <a class="tooltip tooltip-right" data-tip="Пользователи в сети" (click)="modalUsers.showModal()">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+        <a
+          class="tooltip tooltip-right"
+          data-tip="Пользователи в сети"
+          (click)="modalUsers.showModal()">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
-                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
             </g>
           </svg>
         </a>
@@ -61,7 +94,10 @@
     <div class="hero-content flex-col text-center">
       <div class="max-w-full">
         <h1 class="text-5xl font-bold">Произошла ошибка подключения!</h1>
-        <p class="py-6">При подключения к серверу произошла ошибка, возможно он недоступен. Попробуйте позже.</p>
+        <p class="py-6">
+          При подключения к серверу произошла ошибка, возможно он недоступен.
+          Попробуйте позже.
+        </p>
         <button class="btn btn-primary uppercase" routerLink="/">
           на главную
         </button>
@@ -72,17 +108,30 @@
 <dialog class="modal" #modalClipboard>
   <div class="modal-box">
     <form method="dialog">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+        ✕
+      </button>
     </form>
     <h3 class="text-lg font-bold">Буфер обмена</h3>
-    <p class="py-4">Введите текст, который нужно отправить в буфер обмена удаленного компьютера.</p>
-    <textarea [(ngModel)]="clipboard"
-              placeholder="Буфер обмена"
-              class="textarea textarea-bordered w-full h-72"></textarea>
-    <p class="py-4 text-error text-center" *ngIf="loading$ | async">Буфер обмена недоступен при загрузке.</p>
+    <p class="py-4">
+      Введите текст, который нужно отправить в буфер обмена удаленного
+      компьютера.
+    </p>
+    <textarea
+      [(ngModel)]="clipboard"
+      placeholder="Буфер обмена"
+      class="textarea textarea-bordered w-full h-72"></textarea>
+    <p class="py-4 text-error text-center" *ngIf="loading$ | async">
+      Буфер обмена недоступен при загрузке.
+    </p>
     <div class="modal-action">
-      <button class="btn uppercase" [disabled]="(loading$ | async) || (err$ | async) || clipboard.length === 0"
-              (click)="sendClipboard(); modalClipboard.close()">отправить
+      <button
+        class="btn uppercase"
+        [disabled]="
+          (loading$ | async) || (err$ | async) || clipboard.length === 0
+        "
+        (click)="sendClipboard(); modalClipboard.close()">
+        отправить
       </button>
     </div>
   </div>
@@ -90,7 +139,9 @@
 <dialog class="modal" #modalUsers>
   <div class="modal-box">
     <form method="dialog">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+        ✕
+      </button>
     </form>
     <h3 class="text-lg font-bold">Подключенные пользователи:</h3>
     <div class="flex flex-wrap items-center m-2">
@@ -99,7 +150,9 @@
           <span class="badge badge-primary badge-lg m-2">{{ user }}</span>
         }
       } @else {
-        <div class="text-red-800 text-xl">Никто не подключился, возможно произошла ошибка.</div>
+        <div class="text-red-800 text-xl">
+          Никто не подключился, возможно произошла ошибка.
+        </div>
       }
     </div>
   </div>

@@ -9,6 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Полученные файлы необходимо разместить на сервере, который способен раздавать статический контент, например: `nginx`.
 
 Пример конфигурации `nginx` сервера.
+
 ```
 server {
 

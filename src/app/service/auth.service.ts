@@ -1,14 +1,17 @@
-import {Injectable} from '@angular/core';
-import {OAuthService} from "angular-oauth2-oidc";
-import {ConfigService} from "./config.service";
+import { Injectable } from '@angular/core';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { ConfigService } from './config.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private err: boolean;
 
-  constructor(private oauthService: OAuthService, private configService: ConfigService) {
+  constructor(
+    private oauthService: OAuthService,
+    private configService: ConfigService
+  ) {
     const config = {
       issuer: this.configService.getAuthUrl(),
       redirectUri: `${window.location.origin}/index.html`,
@@ -36,7 +39,7 @@ export class AuthService {
   }
 
   login() {
-    this.oauthService.initCodeFlow()
+    this.oauthService.initCodeFlow();
   }
 
   logout() {

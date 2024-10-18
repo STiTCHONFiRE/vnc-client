@@ -3,6 +3,6 @@ export interface UserDataEvent {
   eventType: string;
 }
 
-export interface UsersData{
+export interface UsersData {
   usernames: Set<string>;
 }

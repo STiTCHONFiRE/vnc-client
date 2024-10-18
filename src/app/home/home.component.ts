@@ -8,7 +8,7 @@ import { AuthService } from '../service/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   vncData$: Observable<{
@@ -19,18 +19,18 @@ export class HomeComponent implements OnInit {
 
   public vncService: VnsService = inject(VnsService);
 
-  constructor(
-    private readonly authService: AuthService,
-  ) {
-  }
+  constructor(private readonly authService: AuthService) {}
 
   ngOnInit(): void {
     this.vncData$ = this.vncService.vncData$().pipe(
-      map((result) => {
-        return {appState: 'APP_LOADED', appData: result};
+      map(result => {
+        return {
+          appState: 'APP_LOADED',
+          appData: result,
+        };
       }),
-      startWith({appState: 'APP_LOADING'}),
-      catchError((err: HttpErrorResponse) => of({appState: 'APP_ERROR', err}))
+      startWith({ appState: 'APP_LOADING' }),
+      catchError((err: HttpErrorResponse) => of({ appState: 'APP_ERROR', err }))
     );
   }
 

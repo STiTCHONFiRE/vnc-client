@@ -6,14 +6,17 @@ import { tokenResolverFn } from './service/token.service';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'vnc/:id', component: VncClientComponent, resolve: {tokenData: tokenResolverFn}},
-  {path: 'test', component: TestComponent}
+  { path: '', component: HomeComponent },
+  {
+    path: 'vnc/:id',
+    component: VncClientComponent,
+    resolve: { tokenData: tokenResolverFn },
+  },
+  { path: 'test', component: TestComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
